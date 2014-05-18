@@ -26,6 +26,16 @@
 @property (weak) IBOutlet NSButton *opsSaveToFileCheck;
 
 
-- (IBAction)toggleOptionsDrawer:(id)sender;
+- (IBAction)opsDrawerDidToggle:(id)sender;
+
+- (IBAction)opsSpeedDidToggle:(id)sender;
+- (IBAction)opsSpeedDidChange:(id)sender;
+
+- (IBAction)opsPitchDidToggle:(id)sender;
+- (IBAction)opsPitchDidChange:(id)sender;
+
+- (IBAction)opsVolumeDidChange:(id)sender;
+- (IBAction)opsSaveToFileDidToggle:(id)sender;
+
 
 @end

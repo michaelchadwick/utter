@@ -12,8 +12,15 @@
 @implementation AppDelegate
 
 @synthesize textToUtter;
-@synthesize opsDrawer;
 @synthesize voicesPopup;
+@synthesize opsDrawer;
+@synthesize opsDrawerToggle;
+@synthesize opsSpeedCheck;
+@synthesize opsSpeed;
+@synthesize opsPitchCheck;
+@synthesize opsPitch;
+@synthesize opsVolume;
+@synthesize opsSaveToFileCheck;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
@@ -44,7 +51,7 @@
   [opsDrawer setContentSize:NSMakeSize(400,400)];
 }
 
-- (void)toggleOptionsDrawer:(id)sender
+- (void)opsDrawerDidToggle:(id)sender
 {
   NSDrawerState state = [opsDrawer state];
   if (NSDrawerOpeningState == state || NSDrawerOpenState == state) {
@@ -52,6 +59,30 @@
   } else {
     [opsDrawer openOnEdge:NSMinYEdge];
   }
+}
+
+- (IBAction)opsSpeedDidToggle:(id)sender {
+  NSLog(@"opsSpeedCheck is %ld", (long)[opsSpeedCheck state]);
+}
+
+- (IBAction)opsSpeedDidChange:(id)sender {
+  NSLog(@"opsSpeed is %ld", (long)[opsSpeed floatValue]);
+}
+
+- (IBAction)opsPitchDidToggle:(id)sender {
+  NSLog(@"opsPitchCheck is %ld", (long)[opsPitchCheck state]);
+}
+
+- (IBAction)opsPitchDidChange:(id)sender {
+  NSLog(@"opsPitch is %ld", (long)[opsPitch floatValue]);
+}
+
+- (IBAction)opsVolumeDidChange:(id)sender {
+  NSLog(@"opsVolume is %ld", (long)[opsVolume floatValue]);
+}
+
+- (IBAction)opsSaveToFileDidToggle:(id)sender {
+  NSLog(@"opsSaveToFileCheck is %ld", (long)[opsSaveToFileCheck state]);
 }
 
 - (void)drawerWillOpen:(NSNotification *)notification {}

@@ -31,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		274319B81928C17B00A447AA /* UtterConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtterConstants.h; sourceTree = "<group>"; };
 		2767245C192769850003E199 /* Utter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Utter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2767245F192769850003E199 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27672462192769850003E199 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -120,6 +121,7 @@
 				27672474192769850003E199 /* MainMenu.xib */,
 				27672477192769850003E199 /* Images.xcassets */,
 				27672466192769850003E199 /* Supporting Files */,
+				274319B81928C17B00A447AA /* UtterConstants.h */,
 			);
 			path = Utter;
 			sourceTree = "<group>";
@@ -466,6 +468,7 @@
 				2767248F192769850003E199 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27672490192769850003E199 /* Build configuration list for PBXNativeTarget "UtterTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +477,7 @@
 				27672492192769850003E199 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

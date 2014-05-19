@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, NSTextFieldDelegate, NSDrawerDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, NSTextFieldDelegate, NSDrawerDelegate, NSSpeechSynthesizerDelegate> {
   NSSpeechSynthesizer *spSynth;
 }
 
@@ -19,10 +19,10 @@
 
 @property (weak) IBOutlet NSDrawer *opsDrawer;
 @property (weak) IBOutlet NSButton *opsSpeedCheck;
-@property (weak) IBOutlet NSSlider *opsSpeed;
+@property (weak) IBOutlet NSSlider *opsSpeedSlider;
 @property (weak) IBOutlet NSButton *opsPitchCheck;
-@property (weak) IBOutlet NSSlider *opsPitch;
-@property (weak) IBOutlet NSSlider *opsVolume;
+@property (weak) IBOutlet NSSlider *opsPitchSlider;
+@property (weak) IBOutlet NSSlider *opsVolumeSlider;
 @property (weak) IBOutlet NSButton *opsSaveToFileCheck;
 
 

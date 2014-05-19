@@ -16,16 +16,22 @@
 @synthesize opsDrawer;
 @synthesize opsDrawerToggle;
 @synthesize opsSpeedCheck;
-@synthesize opsSpeed;
+@synthesize opsSpeedSlider;
 @synthesize opsPitchCheck;
-@synthesize opsPitch;
-@synthesize opsVolume;
+@synthesize opsPitchSlider;
+@synthesize opsVolumeSlider;
 @synthesize opsSaveToFileCheck;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+  spSynth = [[NSSpeechSynthesizer alloc] init];
+
+  [spSynth setDelegate:self];
   [opsDrawer setDelegate:self];
   [textToUtter setDelegate:self];
+
+  [textToUtter setStringValue:@"hello world"];
+  [opsVolumeSlider setFloatValue:1.0];
 
   [self populateVoices];
   [self setupOptionsDrawer];
@@ -33,12 +39,65 @@
 
 - (void)controlTextDidEndEditing:(NSNotification *)obj
 {
-  spSynth = [[NSSpeechSynthesizer alloc] init];
   NSString *curVoice = [NSString stringWithFormat:@"%@%@", APPLE_VOICE_PREFIX, [voicesPopup titleOfSelectedItem]];
-  [spSynth setVoice:curVoice];
-
   NSString *utterance = [textToUtter stringValue];
-  [spSynth startSpeakingString:utterance];
+
+  // set voice
+  [spSynth setVoice:curVoice];
+  NSLog(@"utteranceVOICE: %@", [spSynth voice]);
+
+  // set rate/speed
+  if ([opsSpeedCheck state] == NSOnState)
+  {
+    [spSynth setRate:[opsSpeedSlider floatValue]];
+  }
+  NSLog(@"utteranceRATE: %f", [spSynth rate]);
+
+  // set pitch
+  if ([opsPitchCheck state] == NSOnState)
+  {
+//    [spSynth setObject:opsPitchSlider forProperty:NSSpeechPitchBaseProperty error:Nil];
+//    [spSynth setObject:opsPitchSlider forProperty:NSSpeechPitchModProperty error:Nil];
+  }
+  NSLog(@"utterancePITCHBASE: %@", [spSynth objectForProperty:NSSpeechPitchBaseProperty error:Nil]);
+  NSLog(@"utterancePITCHMOD: %@", [spSynth objectForProperty:NSSpeechPitchModProperty error:Nil]);
+
+  // set volume
+  [spSynth setVolume:[opsVolumeSlider floatValue]];
+  NSLog(@"utteranceVOLUME: %f", [spSynth volume]);
+
+  // speak
+  bool speechPlayed = [spSynth startSpeakingString:utterance];
+  NSLog(@"speech sent to speakers successfully? %d", speechPlayed);
+
+  // save to file, if enabled
+  if ([opsSaveToFileCheck state] == NSOnState)
+  {
+    NSSpeechSynthesizer *spSynthToSave = [[NSSpeechSynthesizer alloc] init];
+    [spSynthToSave setDelegate:self];
+    NSString *utteranceToSave = [textToUtter stringValue];
+    [spSynthToSave setVoice:curVoice];
+    if ([opsSpeedCheck state] == NSOnState)
+      [spSynthToSave setRate:[opsSpeedSlider floatValue]];
+    if ([opsPitchCheck state] == NSOnState)
+    {
+      //    [spSynth setObject:opsPitchSlider forProperty:NSSpeechPitchBaseProperty error:Nil];
+      //    [spSynth setObject:opsPitchSlider forProperty:NSSpeechPitchModProperty error:Nil];
+    }
+    [spSynthToSave setVolume:[opsVolumeSlider floatValue]];
+    int fileCode = arc4random_uniform(999999999);
+    NSString *homeUrl = [[[NSProcessInfo processInfo] environment] objectForKey:@"HOME"];
+    NSString *fileString = [NSString stringWithFormat:@"%@/Desktop/utter_%d.aiff", homeUrl, fileCode];
+    NSURL *fileUrl = [[NSURL alloc] initFileURLWithPath:fileString];
+    NSLog(@"fileUrl: %@", fileUrl);
+    bool speechSaved = [spSynthToSave startSpeakingString:utteranceToSave toURL:fileUrl];
+    NSLog(@"speech sent to file successfully? %d", speechSaved);
+  }
+}
+
+- (void)speechSynthesizer:(NSSpeechSynthesizer *)sender didFinishSpeaking:(BOOL)finishedSpeaking
+{
+  NSLog(@"speech synthesis finished");
 }
 
 - (void)setupOptionsDrawer
@@ -62,27 +121,22 @@
 }
 
 - (IBAction)opsSpeedDidToggle:(id)sender {
-  NSLog(@"opsSpeedCheck is %ld", (long)[opsSpeedCheck state]);
+  NSLog(@"opsSpeedCheck toggled to %ld", (long)[opsSpeedCheck state]);
 }
-
 - (IBAction)opsSpeedDidChange:(id)sender {
-  NSLog(@"opsSpeed is %ld", (long)[opsSpeed floatValue]);
+  NSLog(@"opsSpeedSlider is now %ld", (long)[opsSpeedSlider floatValue]);
 }
-
 - (IBAction)opsPitchDidToggle:(id)sender {
-  NSLog(@"opsPitchCheck is %ld", (long)[opsPitchCheck state]);
+  NSLog(@"opsPitchCheck toggled to %ld", (long)[opsPitchCheck state]);
 }
-
 - (IBAction)opsPitchDidChange:(id)sender {
-  NSLog(@"opsPitch is %ld", (long)[opsPitch floatValue]);
+  NSLog(@"opsPitchSlider is now %ld", (long)[opsPitchSlider floatValue]);
 }
-
 - (IBAction)opsVolumeDidChange:(id)sender {
-  NSLog(@"opsVolume is %ld", (long)[opsVolume floatValue]);
+  NSLog(@"opsVolumeSlider is now %f", [opsVolumeSlider floatValue]);
 }
-
 - (IBAction)opsSaveToFileDidToggle:(id)sender {
-  NSLog(@"opsSaveToFileCheck is %ld", (long)[opsSaveToFileCheck state]);
+  NSLog(@"opsSaveToFileCheck toggled to %ld", (long)[opsSaveToFileCheck state]);
 }
 
 - (void)drawerWillOpen:(NSNotification *)notification {}

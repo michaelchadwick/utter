@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
@@ -15,15 +15,13 @@
             <connections>
                 <outlet property="opsDrawer" destination="mDW-op-id8" id="yBs-J5-fCu"/>
                 <outlet property="opsDrawerToggle" destination="eEI-Hu-KO3" id="Cyo-6s-MjU"/>
-                <outlet property="opsPitch" destination="Zrt-dE-Xso" id="ISd-sG-uaZ"/>
                 <outlet property="opsPitchCheck" destination="nhd-Mk-P5E" id="hxx-6K-YNx"/>
+                <outlet property="opsPitchSlider" destination="Zrt-dE-Xso" id="YrD-Qt-6Ja"/>
                 <outlet property="opsSaveToFileCheck" destination="iH6-gE-vlW" id="fq6-Ww-sXt"/>
-                <outlet property="opsSaveToFileDidToggle" destination="iH6-gE-vlW" id="gr4-Jm-leu"/>
-                <outlet property="opsSpeed" destination="oeV-ZC-kvJ" id="dca-bv-Zk4"/>
                 <outlet property="opsSpeedCheck" destination="gee-NU-uPg" id="Z52-2v-ote"/>
-                <outlet property="opsVolume" destination="TwN-cO-19L" id="fuF-wF-6QT"/>
+                <outlet property="opsSpeedSlider" destination="oeV-ZC-kvJ" id="dt4-m5-fmU"/>
+                <outlet property="opsVolumeSlider" destination="TwN-cO-19L" id="6A3-3d-1Jo"/>
                 <outlet property="parentWindow" destination="QvC-M9-y7g" id="3b2-s0-lVU"/>
-                <outlet property="sliderChangeOpsSpeed" destination="oeV-ZC-kvJ" id="CSe-el-CDc"/>
                 <outlet property="textToUtter" destination="s6g-py-ZMg" id="VDg-VP-x9B"/>
                 <outlet property="voicesPopup" destination="a8o-Gm-Xvo" id="kZj-bg-3ce"/>
             </connections>
@@ -690,7 +688,7 @@
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s6g-py-ZMg">
                         <rect key="frame" x="0.0" y="44" width="389" height="112"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" editable="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="5EO-Jc-wUI">
+                        <textFieldCell key="cell" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="5EO-Jc-wUI">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -762,7 +760,7 @@
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oeV-ZC-kvJ">
                     <rect key="frame" x="95" y="100" width="245" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="Cbc-Mn-fop"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="300" doubleValue="200" tickMarkPosition="above" sliderType="linear" id="Cbc-Mn-fop"/>
                     <connections>
                         <action selector="opsSpeedDidChange:" target="Voe-Tx-rLC" id="7ZI-c6-61d"/>
                     </connections>
@@ -778,7 +776,7 @@
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TwN-cO-19L">
                     <rect key="frame" x="95" y="40" width="245" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="GHD-Fb-j3Y"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="GHD-Fb-j3Y"/>
                     <connections>
                         <action selector="opsVolumeDidChange:" target="Voe-Tx-rLC" id="4r3-qI-4kL"/>
                     </connections>

@@ -24,6 +24,7 @@
 @property (weak) IBOutlet NSSlider *opsPitchSlider;
 @property (weak) IBOutlet NSSlider *opsVolumeSlider;
 @property (weak) IBOutlet NSButton *opsSaveToFileCheck;
+@property (weak) IBOutlet NSButton *opsUseTextAsFileName;
 
 
 - (IBAction)opsDrawerDidToggle:(id)sender;
@@ -36,6 +37,7 @@
 
 - (IBAction)opsVolumeDidChange:(id)sender;
 - (IBAction)opsSaveToFileDidToggle:(id)sender;
+- (IBAction)opsUseTextAsFileNameDidToggle:(id)sender;
 
 
 @end

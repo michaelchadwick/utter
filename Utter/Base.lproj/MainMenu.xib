@@ -20,6 +20,7 @@
                 <outlet property="opsSaveToFileCheck" destination="iH6-gE-vlW" id="fq6-Ww-sXt"/>
                 <outlet property="opsSpeedCheck" destination="gee-NU-uPg" id="Z52-2v-ote"/>
                 <outlet property="opsSpeedSlider" destination="oeV-ZC-kvJ" id="dt4-m5-fmU"/>
+                <outlet property="opsUseTextAsFileName" destination="q12-za-nzS" id="TYq-g1-Tnw"/>
                 <outlet property="opsVolumeSlider" destination="TwN-cO-19L" id="6A3-3d-1Jo"/>
                 <outlet property="parentWindow" destination="QvC-M9-y7g" id="3b2-s0-lVU"/>
                 <outlet property="textToUtter" destination="s6g-py-ZMg" id="VDg-VP-x9B"/>
@@ -727,11 +728,11 @@
             </view>
         </window>
         <customView id="9co-fP-vJB" userLabel="Drawer Content View">
-            <rect key="frame" x="0.0" y="0.0" width="358" height="134"/>
+            <rect key="frame" x="0.0" y="0.0" width="332" height="152"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fN2-0m-unI">
-                    <rect key="frame" x="18" y="102" width="42" height="17"/>
+                    <rect key="frame" x="23" y="120" width="42" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Speed" id="p1h-bq-rjy">
                         <font key="font" metaFont="system"/>
@@ -740,7 +741,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Pl-8C-zSL">
-                    <rect key="frame" x="22" y="72" width="35" height="17"/>
+                    <rect key="frame" x="27" y="90" width="35" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pitch" id="mQT-F4-AmL">
                         <font key="font" metaFont="system"/>
@@ -749,7 +750,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dmy-Gp-Q5h">
-                    <rect key="frame" x="13" y="42" width="52" height="17"/>
+                    <rect key="frame" x="18" y="60" width="52" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume" id="ytR-C9-fr9">
                         <font key="font" metaFont="system"/>
@@ -758,7 +759,7 @@
                     </textFieldCell>
                 </textField>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oeV-ZC-kvJ">
-                    <rect key="frame" x="95" y="100" width="245" height="21"/>
+                    <rect key="frame" x="110" y="118" width="204" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="300" doubleValue="200" tickMarkPosition="above" sliderType="linear" id="Cbc-Mn-fop"/>
                     <connections>
@@ -766,7 +767,7 @@
                     </connections>
                 </slider>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zrt-dE-Xso">
-                    <rect key="frame" x="95" y="70" width="245" height="21"/>
+                    <rect key="frame" x="110" y="88" width="204" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="JJS-sd-XBZ"/>
                     <connections>
@@ -774,7 +775,7 @@
                     </connections>
                 </slider>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TwN-cO-19L">
-                    <rect key="frame" x="95" y="40" width="245" height="21"/>
+                    <rect key="frame" x="110" y="58" width="204" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="GHD-Fb-j3Y"/>
                     <connections>
@@ -782,7 +783,7 @@
                     </connections>
                 </slider>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gee-NU-uPg">
-                    <rect key="frame" x="69" y="101" width="22" height="18"/>
+                    <rect key="frame" x="84" y="119" width="22" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="pXh-bY-9Q7">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -793,7 +794,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhd-Mk-P5E">
-                    <rect key="frame" x="69" y="71" width="22" height="18"/>
+                    <rect key="frame" x="84" y="89" width="22" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Rui-Cc-MwD">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -804,7 +805,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iH6-gE-vlW">
-                    <rect key="frame" x="13" y="13" width="171" height="18"/>
+                    <rect key="frame" x="81" y="36" width="171" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Save to file on desktop?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4nr-ov-vJ3">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -812,6 +813,17 @@
                     </buttonCell>
                     <connections>
                         <action selector="opsSaveToFileDidToggle:" target="Voe-Tx-rLC" id="oUK-Ay-GIv"/>
+                    </connections>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q12-za-nzS">
+                    <rect key="frame" x="85" y="11" width="163" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Use text for file name?" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="En1-I6-IOk">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="opsUseTextAsFileNameDidToggle:" target="Voe-Tx-rLC" id="Lxg-O3-NVH"/>
                     </connections>
                 </button>
             </subviews>

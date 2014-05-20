@@ -21,6 +21,7 @@
 @synthesize opsPitchSlider;
 @synthesize opsVolumeSlider;
 @synthesize opsSaveToFileCheck;
+@synthesize opsUseTextAsFileName;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
@@ -86,9 +87,18 @@
       //    [spSynth setObject:opsPitchSlider forProperty:NSSpeechPitchModProperty error:Nil];
     }
     [spSynthToSave setVolume:[opsVolumeSlider floatValue]];
-    int fileCode = arc4random_uniform(999999999);
+
     NSString *homeUrl = [[[NSProcessInfo processInfo] environment] objectForKey:@"HOME"];
-    NSString *fileString = [NSString stringWithFormat:@"%@/Desktop/utter_%d.aiff", homeUrl, fileCode];
+    NSString *fileString;
+
+    if ([opsUseTextAsFileName state] == NSOffState)
+    {
+      int fileCode = arc4random_uniform(999999999);
+      fileString = [NSString stringWithFormat:@"%@/Desktop/utter_%d.aiff", homeUrl, fileCode];
+    } else {
+      NSString *customName = [textToUtter stringValue];
+      fileString = [NSString stringWithFormat:@"%@/Desktop/utter_%@.aiff", homeUrl, customName];
+    }
     NSURL *fileUrl = [[NSURL alloc] initFileURLWithPath:fileString];
     NSLog(@"fileUrl: %@", fileUrl);
     bool speechSaved = [spSynthToSave startSpeakingString:utteranceToSave toURL:fileUrl];
@@ -103,12 +113,22 @@
 
 - (void)setupOptionsDrawer
 {
+  NSSize initContentSize = NSMakeSize(200, 500);
   [opsDrawer setPreferredEdge:NSMinYEdge];
-  NSSize contentSize = NSMakeSize(100,100);
+  [opsDrawer setContentSize:initContentSize];
+  [opsDrawer setMinContentSize:initContentSize];
+  [opsDrawer setMaxContentSize:initContentSize];
+  [opsDrawer setLeadingOffset:20];
+  [opsDrawer setTrailingOffset:20];
 
-  [opsDrawer setMinContentSize:contentSize];
-  [opsDrawer setMaxContentSize:NSMakeSize(400,400)];
-  [opsDrawer setContentSize:NSMakeSize(400,400)];
+  NSSize opsDrawerContentSize = [opsDrawer contentSize];
+  NSLog(@"opsDrawer initial width: %f and height: %f", opsDrawerContentSize.width, opsDrawerContentSize.height);
+}
+
+- (NSSize)drawerWillResizeContents:(NSDrawer *)sender toSize:(NSSize)contentSize
+{
+  NSLog(@"opsDrawer current width: %f and height: %f", contentSize.width, contentSize.height);
+  return contentSize;
 }
 
 - (void)opsDrawerDidToggle:(id)sender
@@ -138,6 +158,19 @@
 }
 - (IBAction)opsSaveToFileDidToggle:(id)sender {
   NSLog(@"opsSaveToFileCheck toggled to %ld", (long)[opsSaveToFileCheck state]);
+  if ([opsSaveToFileCheck state] == NSOnState)
+  {
+    [opsUseTextAsFileName setEnabled:true];
+    [opsUseTextAsFileName setState:1];
+  } else {
+    [opsUseTextAsFileName setEnabled:false];
+    [opsUseTextAsFileName setState:0];
+  }
+  NSLog(@"opsUseTextAsFileName enabled? %ld", (long)[opsUseTextAsFileName isEnabled]);
+}
+
+- (IBAction)opsUseTextAsFileNameDidToggle:(id)sender {
+  NSLog(@"opsUseTextAsFileName toggled to %ld", (long)[opsUseTextAsFileName state]);
 }
 
 - (void)drawerWillOpen:(NSNotification *)notification {}

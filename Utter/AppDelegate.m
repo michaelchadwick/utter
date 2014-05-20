@@ -30,7 +30,7 @@
   [opsDrawer setDelegate:self];
   [textToUtter setDelegate:self];
 
-  [textToUtter setStringValue:@"hello world"];
+  [textToUtter setStringValue:@"this is a really long sentence so i can test changing options on the fly"];
   [opsVolumeSlider setFloatValue:1.0];
 
   [self populateVoices];
@@ -67,6 +67,7 @@
   NSLog(@"utteranceVOLUME: %f", [spSynth volume]);
 
   // speak
+  [spSynth stopSpeaking];
   bool speechPlayed = [spSynth startSpeakingString:utterance];
   NSLog(@"speech sent to speakers successfully? %d", speechPlayed);
 

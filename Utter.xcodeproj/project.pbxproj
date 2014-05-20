@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2742FF55192B4BE10067DEFC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2742FF54192B4BE10067DEFC /* README.md */; };
 		27672460192769850003E199 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767245F192769850003E199 /* Cocoa.framework */; };
 		2767246A192769850003E199 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27672468192769850003E199 /* InfoPlist.strings */; };
 		2767246C192769850003E199 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767246B192769850003E199 /* main.m */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2742FF54192B4BE10067DEFC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		274319B81928C17B00A447AA /* UtterConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtterConstants.h; sourceTree = "<group>"; };
 		2767245C192769850003E199 /* Utter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Utter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2767245F192769850003E199 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -81,6 +83,7 @@
 				27672483192769850003E199 /* UtterTests */,
 				2767245E192769850003E199 /* Frameworks */,
 				2767245D192769850003E199 /* Products */,
+				2742FF54192B4BE10067DEFC /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,6 +237,7 @@
 			files = (
 				2767246A192769850003E199 /* InfoPlist.strings in Resources */,
 				27672478192769850003E199 /* Images.xcassets in Resources */,
+				2742FF55192B4BE10067DEFC /* README.md in Resources */,
 				27672470192769850003E199 /* Credits.rtf in Resources */,
 				27672476192769850003E199 /* MainMenu.xib in Resources */,
 			);

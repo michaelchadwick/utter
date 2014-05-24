@@ -11,6 +11,7 @@
 
 @implementation AppDelegate
 
+@synthesize parentWindow;
 @synthesize textToUtter;
 @synthesize voicesPopup;
 @synthesize opsDrawer;
@@ -31,7 +32,7 @@
   [opsDrawer setDelegate:self];
   [textToUtter setDelegate:self];
 
-  [textToUtter setStringValue:@"this is a really long sentence so i can test changing options on the fly"];
+  [textToUtter setStringValue:@"hello world"];
   [opsVolumeSlider setFloatValue:1.0];
 
   [self populateVoices];
@@ -106,28 +107,19 @@
   }
 }
 
-- (void)speechSynthesizer:(NSSpeechSynthesizer *)sender didFinishSpeaking:(BOOL)finishedSpeaking
-{
-  NSLog(@"speech synthesis finished");
-}
+- (void)speechSynthesizer:(NSSpeechSynthesizer *)sender didFinishSpeaking:(BOOL)finishedSpeaking {}
 
 - (void)setupOptionsDrawer
 {
-  NSSize initContentSize = NSMakeSize(200, 500);
   [opsDrawer setPreferredEdge:NSMinYEdge];
-  [opsDrawer setContentSize:initContentSize];
-  [opsDrawer setMinContentSize:initContentSize];
-  [opsDrawer setMaxContentSize:initContentSize];
+  [opsDrawer setMinContentSize:NSMakeSize(100,150)];
+  [opsDrawer setMaxContentSize:NSMakeSize(100,150)];
   [opsDrawer setLeadingOffset:20];
   [opsDrawer setTrailingOffset:20];
-
-  NSSize opsDrawerContentSize = [opsDrawer contentSize];
-  NSLog(@"opsDrawer initial width: %f and height: %f", opsDrawerContentSize.width, opsDrawerContentSize.height);
 }
 
 - (NSSize)drawerWillResizeContents:(NSDrawer *)sender toSize:(NSSize)contentSize
 {
-  NSLog(@"opsDrawer current width: %f and height: %f", contentSize.width, contentSize.height);
   return contentSize;
 }
 
@@ -141,37 +133,21 @@
   }
 }
 
-- (IBAction)opsSpeedDidToggle:(id)sender {
-  NSLog(@"opsSpeedCheck toggled to %ld", (long)[opsSpeedCheck state]);
-}
-- (IBAction)opsSpeedDidChange:(id)sender {
-  NSLog(@"opsSpeedSlider is now %ld", (long)[opsSpeedSlider floatValue]);
-}
-- (IBAction)opsPitchDidToggle:(id)sender {
-  NSLog(@"opsPitchCheck toggled to %ld", (long)[opsPitchCheck state]);
-}
-- (IBAction)opsPitchDidChange:(id)sender {
-  NSLog(@"opsPitchSlider is now %ld", (long)[opsPitchSlider floatValue]);
-}
-- (IBAction)opsVolumeDidChange:(id)sender {
-  NSLog(@"opsVolumeSlider is now %f", [opsVolumeSlider floatValue]);
-}
+- (IBAction)opsSpeedDidToggle:(id)sender {}
+- (IBAction)opsSpeedDidChange:(id)sender {}
+- (IBAction)opsPitchDidToggle:(id)sender {}
+- (IBAction)opsPitchDidChange:(id)sender {}
+- (IBAction)opsVolumeDidChange:(id)sender {}
 - (IBAction)opsSaveToFileDidToggle:(id)sender {
-  NSLog(@"opsSaveToFileCheck toggled to %ld", (long)[opsSaveToFileCheck state]);
   if ([opsSaveToFileCheck state] == NSOnState)
   {
     [opsUseTextAsFileName setEnabled:true];
-    [opsUseTextAsFileName setState:1];
   } else {
     [opsUseTextAsFileName setEnabled:false];
     [opsUseTextAsFileName setState:0];
   }
-  NSLog(@"opsUseTextAsFileName enabled? %ld", (long)[opsUseTextAsFileName isEnabled]);
 }
-
-- (IBAction)opsUseTextAsFileNameDidToggle:(id)sender {
-  NSLog(@"opsUseTextAsFileName toggled to %ld", (long)[opsUseTextAsFileName state]);
-}
+- (IBAction)opsUseTextAsFileNameDidToggle:(id)sender {}
 
 - (void)drawerWillOpen:(NSNotification *)notification {}
 - (void)drawerWillClose:(NSNotification *)notification {}

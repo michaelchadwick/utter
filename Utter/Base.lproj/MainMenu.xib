@@ -13,6 +13,9 @@
         </customObject>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="btnPauseResume" destination="YDg-3k-fdU" id="yQf-ba-JRv"/>
+                <outlet property="btnPlayStop" destination="rhl-It-29Q" id="Zaz-Js-T1z"/>
+                <outlet property="btnStopClick" destination="YDg-3k-fdU" id="zGl-pe-GCd"/>
                 <outlet property="opsDrawer" destination="mDW-op-id8" id="yBs-J5-fCu"/>
                 <outlet property="opsDrawerToggle" destination="eEI-Hu-KO3" id="Cyo-6s-MjU"/>
                 <outlet property="opsPitchCheck" destination="nhd-Mk-P5E" id="hxx-6K-YNx"/>
@@ -20,7 +23,7 @@
                 <outlet property="opsSaveToFileCheck" destination="iH6-gE-vlW" id="fq6-Ww-sXt"/>
                 <outlet property="opsSpeedCheck" destination="gee-NU-uPg" id="Z52-2v-ote"/>
                 <outlet property="opsSpeedSlider" destination="oeV-ZC-kvJ" id="dt4-m5-fmU"/>
-                <outlet property="opsUseTextAsFileName" destination="q12-za-nzS" id="TYq-g1-Tnw"/>
+                <outlet property="opsUseTextAsFileNameCheck" destination="q12-za-nzS" id="Q1C-0y-WiS"/>
                 <outlet property="opsVolumeSlider" destination="TwN-cO-19L" id="6A3-3d-1Jo"/>
                 <outlet property="parentWindow" destination="QvC-M9-y7g" id="3b2-s0-lVU"/>
                 <outlet property="textToUtter" destination="s6g-py-ZMg" id="VDg-VP-x9B"/>
@@ -680,14 +683,14 @@
         <window title="Utter" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="389" height="207"/>
+            <rect key="contentRect" x="335" y="390" width="434" height="207"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="389" height="207"/>
+                <rect key="frame" x="0.0" y="0.0" width="434" height="207"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s6g-py-ZMg">
-                        <rect key="frame" x="0.0" y="48" width="389" height="159"/>
+                        <rect key="frame" x="0.0" y="48" width="434" height="159"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="5EO-Jc-wUI">
                             <font key="font" metaFont="system"/>
@@ -696,7 +699,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bwC-0V-a3i">
-                        <rect key="frame" x="34" y="16" width="44" height="17"/>
+                        <rect key="frame" x="96" y="16" width="44" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Voices" id="fVU-9G-QGh">
                             <font key="font" metaFont="system"/>
@@ -705,7 +708,7 @@
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8o-Gm-Xvo">
-                        <rect key="frame" x="82" y="11" width="188" height="26"/>
+                        <rect key="frame" x="144" y="11" width="188" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="WTf-mh-n23">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -714,7 +717,7 @@
                         </popUpButtonCell>
                     </popUpButton>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-Hu-KO3">
-                        <rect key="frame" x="269" y="7" width="89" height="32"/>
+                        <rect key="frame" x="331" y="7" width="89" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Options" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oQW-pl-pmm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -722,6 +725,28 @@
                         </buttonCell>
                         <connections>
                             <action selector="opsDrawerDidToggle:" target="Voe-Tx-rLC" id="nE3-Re-UbW"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rhl-It-29Q">
+                        <rect key="frame" x="8" y="6" width="39" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title=">" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gfE-Eu-o2d">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="btnStartStopClick:" target="Voe-Tx-rLC" id="cIl-rV-nRt"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDg-3k-fdU">
+                        <rect key="frame" x="47" y="6" width="39" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="||" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jPv-yx-atO">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="btnPauseResumeClick:" target="Voe-Tx-rLC" id="V5e-gZ-bFD"/>
                         </connections>
                     </button>
                 </subviews>
@@ -761,7 +786,7 @@
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oeV-ZC-kvJ">
                     <rect key="frame" x="107" y="118" width="204" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="300" doubleValue="150" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="Cbc-Mn-fop"/>
+                    <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="300" doubleValue="100" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="Cbc-Mn-fop"/>
                     <connections>
                         <action selector="opsSpeedDidChange:" target="Voe-Tx-rLC" id="7ZI-c6-61d"/>
                     </connections>
@@ -769,7 +794,7 @@
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zrt-dE-Xso">
                     <rect key="frame" x="107" y="86" width="204" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="JJS-sd-XBZ"/>
+                    <sliderCell key="cell" state="on" alignment="left" minValue="30" maxValue="84" doubleValue="56" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="JJS-sd-XBZ"/>
                     <connections>
                         <action selector="opsPitchDidChange:" target="Voe-Tx-rLC" id="FJp-Wt-8DU"/>
                     </connections>
@@ -777,7 +802,7 @@
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TwN-cO-19L">
                     <rect key="frame" x="107" y="58" width="204" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="GHD-Fb-j3Y"/>
+                    <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="GHD-Fb-j3Y"/>
                     <connections>
                         <action selector="opsVolumeDidChange:" target="Voe-Tx-rLC" id="4r3-qI-4kL"/>
                     </connections>

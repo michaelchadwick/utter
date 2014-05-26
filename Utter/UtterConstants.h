@@ -16,4 +16,9 @@
 #define INITIAL_PITCHMOD 60
 #define INITIAL_VOLUME 100
 
+#define ICON_PLAY @"\u25BA"
+#define ICON_STOP @"\u25FC"
+#define ICON_PAUSE @"||"
+#define ICON_RESUME @"|>"
+
 #endif

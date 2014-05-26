@@ -49,12 +49,18 @@
 
   [textToUtter setStringValue:INITIAL_TEXT];
 
+  [self setupButtonIcons];
   [self setupAudioFlags];
   [self populateVoices];
   [self setupOptionsDrawer];
 }
 
 #pragma mark - Setup Subroutines
+- (void)setupButtonIcons
+{
+  [btnPlayStop setTitle:ICON_PLAY];
+  [btnPauseResume setTitle:ICON_PAUSE];
+}
 - (void)setupAudioFlags {
   isPaused = NO;
   isSpeaking = NO;
@@ -122,7 +128,7 @@
   // speak!
   [synth stopSpeaking];
   [synth startSpeakingString:utterance];
-  [btnPlayStop setTitle:@"O"];
+  [btnPlayStop setTitle:ICON_STOP];
   [btnPauseResume setEnabled:YES];
   isSpeaking = YES;
 
@@ -134,7 +140,7 @@
 }
 - (void)stopUtterance {
   [synth stopSpeaking];
-  [btnPlayStop setTitle:@">"];
+  [btnPlayStop setTitle:ICON_PLAY];
   [btnPauseResume setEnabled:NO];
   isSpeaking = NO;
 }
@@ -146,14 +152,14 @@
 }
 - (void)pauseUtterance {
   [synth pauseSpeakingAtBoundary:NSSpeechImmediateBoundary];
-  [btnPauseResume setTitle:@"|>"];
+  [btnPauseResume setTitle:ICON_RESUME];
   [btnPlayStop setEnabled:NO];
   isPaused = YES;
   isSpeaking = NO;
 }
 - (void)resumeUtterance {
   [synth continueSpeaking];
-  [btnPauseResume setTitle:@"||"];
+  [btnPauseResume setTitle:ICON_PAUSE];
   [btnPlayStop setEnabled:YES];
   isPaused = NO;
   isSpeaking = YES;
@@ -338,7 +344,7 @@
   {
     if ([btnPauseResume isEnabled] == YES) [btnPauseResume setEnabled:NO];
     if ([btnPlayStop isEnabled] == NO) [btnPlayStop setEnabled:YES];
-    [btnPlayStop setTitle:@">"];
+    [btnPlayStop setTitle:ICON_PLAY];
     isSpeaking = NO;
   }
 }

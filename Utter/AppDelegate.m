@@ -167,8 +167,10 @@
   NSString *curVoice = [NSString stringWithFormat:@"%@%@", APPLE_VOICE_PREFIX, [voicesPopup titleOfSelectedItem]];
   [synthToSave setVoice:curVoice];
   [synthToSave setRate:[opsSpeedSlider floatValue]];
-  [synth setObject:opsPitchSlider forProperty:NSSpeechPitchBaseProperty error:Nil];
-  [synth setObject:opsPitchSlider forProperty:NSSpeechPitchModProperty error:Nil];
+  NSNumber *newPitch = [NSNumber numberWithFloat:[opsPitchSlider floatValue]];
+  [synthToSave setObject:newPitch forProperty:NSSpeechPitchBaseProperty error:nil];
+  NSNumber *newPitchMod = [NSNumber numberWithFloat:[opsPitchModSlider floatValue]];
+  [synthToSave setObject:newPitchMod forProperty:NSSpeechPitchModProperty error:nil];
   [synthToSave setVolume:[opsVolumeSlider floatValue]/100];
 
   NSString *homeUrl = [[[NSProcessInfo processInfo] environment] objectForKey:@"HOME"];
@@ -180,7 +182,7 @@
     fileString = [NSString stringWithFormat:@"%@/Desktop/utter_%d.aiff", homeUrl, fileCode];
   } else {
     NSString *customName = [textToUtter stringValue];
-    fileString = [NSString stringWithFormat:@"%@/Desktop/utter_%@.aiff", homeUrl, customName];
+    fileString = [NSString stringWithFormat:@"%@/Desktop/%@.aiff", homeUrl, customName];
   }
   NSURL *fileUrl = [[NSURL alloc] initFileURLWithPath:fileString];
   NSLog(@"fileUrl: %@", fileUrl);

@@ -204,6 +204,8 @@
 #pragma mark - IBActions
 - (IBAction)btnStartStopClick:(id)sender { [self startStopUtterance]; }
 - (IBAction)btnPauseResumeClick:(id)sender { [self pauseResumeUtterance]; }
+- (IBAction)voicesPopupDidChange:(id)sender {
+}
 
 - (IBAction)opsDrawerDidToggle:(id)sender {
   NSDrawerState state = [opsDrawer state];

@@ -727,6 +727,9 @@
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" title="OtherViews" id="0Nm-7n-UaM"/>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="voicesPopupDidChange:" target="Voe-Tx-rLC" id="gBL-dQ-4eb"/>
+                        </connections>
                     </popUpButton>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-Hu-KO3">
                         <rect key="frame" x="331" y="9" width="89" height="32"/>

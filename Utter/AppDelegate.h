@@ -52,7 +52,7 @@
 
 - (IBAction)btnStartStopClick:(id)sender;
 - (IBAction)btnPauseResumeClick:(id)sender;
-
+- (IBAction)voicesPopupDidChange:(id)sender;
 - (IBAction)opsDrawerDidToggle:(id)sender;
 
 - (IBAction)opsSpeedDidChange:(id)sender;

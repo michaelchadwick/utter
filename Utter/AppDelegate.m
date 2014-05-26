@@ -27,6 +27,10 @@
 @synthesize opsPitchSlider;
 @synthesize opsPitchText;
 @synthesize opsPitchReset;
+@synthesize opsPitchModCheck;
+@synthesize opsPitchModSlider;
+@synthesize opsPitchModText;
+@synthesize opsPitchModReset;
 @synthesize opsVolumeCheck;
 @synthesize opsVolumeSlider;
 @synthesize opsVolumeText;
@@ -91,6 +95,13 @@
     [synth setObject:newPitch forProperty:NSSpeechPitchBaseProperty error:nil];
   }
 }
+- (void)setSynthPitchMod {
+  if ([opsPitchModCheck state] == NSOnState)
+  {
+    NSNumber *newPitchMod = [NSNumber numberWithFloat:[opsPitchModSlider floatValue]];
+    [synth setObject:newPitchMod forProperty:NSSpeechPitchModProperty error:nil];
+  }
+}
 - (void)setSynthVolume {
   if ([opsVolumeCheck state] == NSOnState)
   {
@@ -118,6 +129,7 @@
   [self setSynthVoice];
   [self setSynthSpeed];
   [self setSynthPitch];
+  [self setSynthPitchMod];
   [self setSynthVolume];
 
   // speak!
@@ -205,7 +217,7 @@
   NSLog(@"utteranceVOICE: %@", [curVoice substringWithRange:range]);
   NSLog(@"utteranceRATE: %f", [synth rate]);
   NSLog(@"utterancePITCHBASE: %@", [synth objectForProperty:NSSpeechPitchBaseProperty error:Nil]);
-  //NSLog(@"utterancePITCHMOD: %@", [synth objectForProperty:NSSpeechPitchModProperty error:Nil]);
+  NSLog(@"utterancePITCHMOD: %@", [synth objectForProperty:NSSpeechPitchModProperty error:Nil]);
   NSLog(@"utteranceVOLUME: %f", [synth volume]);
 }
 
@@ -242,6 +254,16 @@
     if (!isPaused) { [self startUtterance]; }
   }
 }
+- (IBAction)opsPitchModDidChange:(id)sender {
+  [opsPitchModText setFloatValue:(long)[opsPitchModSlider floatValue]];
+
+  if ([opsPitchModCheck state] == NSOnState)
+  {
+    if (!isPaused) { [self startStopUtterance]; }
+    [self setSynthPitchMod];
+    if (!isPaused) { [self startUtterance]; }
+  }
+}
 - (IBAction)opsVolumeDidChange:(id)sender {
   [opsVolumeText setIntegerValue:(long)[opsVolumeSlider integerValue]];
 
@@ -266,6 +288,15 @@
   [opsPitchSlider setFloatValue:INITIAL_PITCH];
   [opsPitchText setFloatValue:INITIAL_PITCH];
   if ([opsPitchCheck state] == NSOnState)
+  {
+    [self startStopUtterance];
+    [self startUtterance];
+  }
+}
+- (IBAction)opsPitchModResetClick:(id)sender {
+  [opsPitchModSlider setFloatValue:INITIAL_PITCHMOD];
+  [opsPitchModText setFloatValue:INITIAL_PITCHMOD];
+  if ([opsPitchModCheck state] == NSOnState)
   {
     [self startStopUtterance];
     [self startUtterance];
@@ -300,6 +331,8 @@
   [opsSpeedText setFloatValue:INITIAL_SPEED];
   [opsPitchSlider setFloatValue:INITIAL_PITCH];
   [opsPitchText setFloatValue:INITIAL_PITCH];
+  [opsPitchModSlider setFloatValue:INITIAL_PITCHMOD];
+  [opsPitchModText setFloatValue:INITIAL_PITCHMOD];
   [opsVolumeSlider setIntegerValue:INITIAL_VOLUME];
   [opsVolumeText setFloatValue:INITIAL_VOLUME];
   [self startStopUtterance];

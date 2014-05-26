@@ -13,6 +13,7 @@
 #define INITIAL_TEXT @"this is a call to all my past resignations. this is a call to all the cows. my kind has all run out. it's been too long!"
 #define INITIAL_SPEED 150
 #define INITIAL_PITCH 56
+#define INITIAL_PITCHMOD 60
 #define INITIAL_VOLUME 100
 
 #endif

@@ -33,6 +33,11 @@
 @property (weak) IBOutlet NSTextField *opsSpeedText;
 @property (weak) IBOutlet NSButton *opsSpeedReset;
 
+@property (weak) IBOutlet NSButton *opsPitchModCheck;
+@property (weak) IBOutlet NSSlider *opsPitchModSlider;
+@property (weak) IBOutlet NSTextField *opsPitchModText;
+@property (weak) IBOutlet NSButton *opsPitchModReset;
+
 @property (weak) IBOutlet NSButton *opsPitchCheck;
 @property (weak) IBOutlet NSSlider *opsPitchSlider;
 @property (weak) IBOutlet NSTextField *opsPitchText;
@@ -55,10 +60,12 @@
 - (IBAction)opsDrawerDidToggle:(id)sender;
 
 - (IBAction)opsSpeedDidChange:(id)sender;
+- (IBAction)opsPitchModDidChange:(id)sender;
 - (IBAction)opsPitchDidChange:(id)sender;
 - (IBAction)opsVolumeDidChange:(id)sender;
 
 - (IBAction)opsSpeedResetClick:(id)sender;
+- (IBAction)opsPitchModResetClick:(id)sender;
 - (IBAction)opsPitchResetClick:(id)sender;
 - (IBAction)opsVolumeResetClick:(id)sender;
 

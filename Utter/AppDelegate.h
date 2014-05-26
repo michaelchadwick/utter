@@ -10,12 +10,8 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, NSTextFieldDelegate, NSDrawerDelegate, NSSpeechSynthesizerDelegate> {
   NSSpeechSynthesizer *synth;
-  NSString *initialUtterance;
   bool isPaused;
   bool isSpeaking;
-  NSNumber *initSpeed;
-  NSNumber *initPitch;
-  NSNumber *initVolume;
 }
 
 @property (assign) IBOutlet NSWindow *parentWindow;

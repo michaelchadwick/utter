@@ -42,9 +42,6 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
   synth = [[NSSpeechSynthesizer alloc] init];
-  initSpeed = [NSNumber numberWithFloat:INITIAL_SPEED];
-  initPitch = [NSNumber numberWithFloat:INITIAL_PITCH];
-  initVolume = [NSNumber numberWithFloat:INITIAL_VOLUME/100];
 
   [synth setDelegate:self];
   [opsDrawer setDelegate:self];
@@ -84,9 +81,7 @@
 }
 - (void)setSynthSpeed {
   if ([opsSpeedCheck state] == NSOnState)
-  {
     [synth setRate:[opsSpeedSlider floatValue]];
-  }
 }
 - (void)setSynthPitch {
   if ([opsPitchCheck state] == NSOnState)
@@ -104,23 +99,15 @@
 }
 - (void)setSynthVolume {
   if ([opsVolumeCheck state] == NSOnState)
-  {
     [synth setVolume:[opsVolumeSlider floatValue]/100];
-  }
 }
 
 #pragma mark - Speech Interaction Subroutines
 - (void)startStopUtterance {
-  // utterance being spoken
   if (isSpeaking)
-  {
     [self stopUtterance];
-  }
-  // utterance not currently speaking
   else
-  {
     [self startUtterance];
-  }
 }
 - (void)startUtterance {
   NSString *utterance = [textToUtter stringValue];
@@ -143,26 +130,19 @@
 
   // save to file, if enabled
   if ([opsSaveToFileCheck state] == NSOnState)
-  {
     [self saveUtteranceToFile];
-  }
 }
 - (void)stopUtterance {
   [synth stopSpeaking];
   [btnPlayStop setTitle:@">"];
   [btnPauseResume setEnabled:NO];
   isSpeaking = NO;
-  NSLog(@"utterance stopped");
 }
 - (void)pauseResumeUtterance {
   if (isPaused)
-  {
     [self resumeUtterance];
-  }
   else
-  {
     [self pauseUtterance];
-  }
 }
 - (void)pauseUtterance {
   [synth pauseSpeakingAtBoundary:NSSpeechImmediateBoundary];
@@ -170,7 +150,6 @@
   [btnPlayStop setEnabled:NO];
   isPaused = YES;
   isSpeaking = NO;
-  NSLog(@"utterance paused");
 }
 - (void)resumeUtterance {
   [synth continueSpeaking];
@@ -178,7 +157,6 @@
   [btnPlayStop setEnabled:YES];
   isPaused = NO;
   isSpeaking = YES;
-  NSLog(@"utterance resumed; playing");
 
   [self logSpeechStats];
 }
@@ -227,11 +205,10 @@
 
 - (IBAction)opsDrawerDidToggle:(id)sender {
   NSDrawerState state = [opsDrawer state];
-  if (NSDrawerOpeningState == state || NSDrawerOpenState == state) {
+  if (NSDrawerOpeningState == state || NSDrawerOpenState == state)
     [opsDrawer close];
-  } else {
+  else
     [opsDrawer openOnEdge:NSMinYEdge];
-  }
 }
 
 - (IBAction)opsSpeedDidChange:(id)sender {
@@ -317,7 +294,9 @@
   if ([opsSaveToFileCheck state] == NSOnState)
   {
     [opsUseTextAsFileNameCheck setEnabled:true];
-  } else {
+  }
+  else
+  {
     [opsUseTextAsFileNameCheck setEnabled:false];
     [opsUseTextAsFileNameCheck setState:0];
   }

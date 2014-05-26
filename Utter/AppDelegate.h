@@ -28,14 +28,17 @@
 
 @property (weak) IBOutlet NSDrawer *opsDrawer;
 
+@property (weak) IBOutlet NSButton *opsSpeedCheck;
 @property (weak) IBOutlet NSSlider *opsSpeedSlider;
 @property (weak) IBOutlet NSTextField *opsSpeedText;
 @property (weak) IBOutlet NSButton *opsSpeedReset;
 
+@property (weak) IBOutlet NSButton *opsPitchCheck;
 @property (weak) IBOutlet NSSlider *opsPitchSlider;
 @property (weak) IBOutlet NSTextField *opsPitchText;
 @property (weak) IBOutlet NSButton *opsPitchReset;
 
+@property (weak) IBOutlet NSButton *opsVolumeCheck;
 @property (weak) IBOutlet NSSlider *opsVolumeSlider;
 @property (weak) IBOutlet NSTextField *opsVolumeText;
 @property (weak) IBOutlet NSButton *opsVolumeReset;

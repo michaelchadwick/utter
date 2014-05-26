@@ -19,14 +19,17 @@
                 <outlet property="opsAllReset" destination="K2v-Cp-bXA" id="cav-C9-9LZ"/>
                 <outlet property="opsDrawer" destination="mDW-op-id8" id="yBs-J5-fCu"/>
                 <outlet property="opsDrawerToggle" destination="eEI-Hu-KO3" id="Cyo-6s-MjU"/>
+                <outlet property="opsPitchCheck" destination="rg2-Eh-FKU" id="Ijn-jg-oxx"/>
                 <outlet property="opsPitchReset" destination="gtx-cM-M9Z" id="HOA-HC-Hed"/>
                 <outlet property="opsPitchSlider" destination="Zrt-dE-Xso" id="YrD-Qt-6Ja"/>
                 <outlet property="opsPitchText" destination="fiZ-nR-GDd" id="e57-xr-gjO"/>
                 <outlet property="opsSaveToFileCheck" destination="iH6-gE-vlW" id="fq6-Ww-sXt"/>
+                <outlet property="opsSpeedCheck" destination="cmW-Sn-udg" id="KIN-5O-K58"/>
                 <outlet property="opsSpeedReset" destination="Jti-97-XHj" id="9aS-NQ-drf"/>
                 <outlet property="opsSpeedSlider" destination="oeV-ZC-kvJ" id="dt4-m5-fmU"/>
                 <outlet property="opsSpeedText" destination="5q5-sI-eFZ" id="Z1Q-cw-QGS"/>
                 <outlet property="opsUseTextAsFileNameCheck" destination="q12-za-nzS" id="Q1C-0y-WiS"/>
+                <outlet property="opsVolumeCheck" destination="Z78-1I-xa0" id="vXp-5K-6YN"/>
                 <outlet property="opsVolumeReset" destination="wkt-5y-tzK" id="Qeo-xs-4kv"/>
                 <outlet property="opsVolumeSlider" destination="TwN-cO-19L" id="6A3-3d-1Jo"/>
                 <outlet property="opsVolumeText" destination="vwK-41-4ki" id="7FF-Vm-vID"/>
@@ -762,7 +765,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fN2-0m-unI">
-                    <rect key="frame" x="23" y="126" width="42" height="17"/>
+                    <rect key="frame" x="15" y="126" width="42" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Speed" id="p1h-bq-rjy">
                         <font key="font" metaFont="system"/>
@@ -771,7 +774,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Pl-8C-zSL">
-                    <rect key="frame" x="27" y="96" width="35" height="17"/>
+                    <rect key="frame" x="19" y="96" width="35" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pitch" id="mQT-F4-AmL">
                         <font key="font" metaFont="system"/>
@@ -780,7 +783,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dmy-Gp-Q5h">
-                    <rect key="frame" x="18" y="66" width="52" height="17"/>
+                    <rect key="frame" x="10" y="66" width="52" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume" id="ytR-C9-fr9">
                         <font key="font" metaFont="system"/>
@@ -789,7 +792,7 @@
                     </textFieldCell>
                 </textField>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oeV-ZC-kvJ">
-                    <rect key="frame" x="81" y="118" width="171" height="27"/>
+                    <rect key="frame" x="93" y="118" width="159" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="300" doubleValue="100" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="Cbc-Mn-fop"/>
                     <connections>
@@ -797,7 +800,7 @@
                     </connections>
                 </slider>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zrt-dE-Xso">
-                    <rect key="frame" x="81" y="86" width="171" height="27"/>
+                    <rect key="frame" x="93" y="86" width="159" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" state="on" alignment="left" minValue="30" maxValue="84" doubleValue="56" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="JJS-sd-XBZ"/>
                     <connections>
@@ -805,7 +808,7 @@
                     </connections>
                 </slider>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TwN-cO-19L">
-                    <rect key="frame" x="81" y="55" width="171" height="27"/>
+                    <rect key="frame" x="93" y="55" width="159" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="100" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="GHD-Fb-j3Y"/>
                     <connections>
@@ -904,6 +907,30 @@
                     <connections>
                         <action selector="opsAllResetClick:" target="Voe-Tx-rLC" id="gVJ-RC-Xod"/>
                     </connections>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cmW-Sn-udg">
+                    <rect key="frame" x="66" y="125" width="22" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="SRP-XC-z4H">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rg2-Eh-FKU">
+                    <rect key="frame" x="66" y="95" width="22" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qSS-nl-Hyg">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z78-1I-xa0">
+                    <rect key="frame" x="66" y="65" width="22" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zkx-hm-CB2">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
                 </button>
             </subviews>
         </customView>

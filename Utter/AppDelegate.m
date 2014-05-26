@@ -19,12 +19,15 @@
 @synthesize voicesPopup;
 @synthesize opsDrawer;
 @synthesize opsDrawerToggle;
+@synthesize opsSpeedCheck;
 @synthesize opsSpeedSlider;
 @synthesize opsSpeedText;
 @synthesize opsSpeedReset;
+@synthesize opsPitchCheck;
 @synthesize opsPitchSlider;
 @synthesize opsPitchText;
 @synthesize opsPitchReset;
+@synthesize opsVolumeCheck;
 @synthesize opsVolumeSlider;
 @synthesize opsVolumeText;
 @synthesize opsVolumeReset;
@@ -71,6 +74,29 @@
   [opsDrawer setLeadingOffset:20];
   [opsDrawer setTrailingOffset:20];
 }
+- (void)setSynthVoice {
+  NSString *curVoice = [NSString stringWithFormat:@"%@%@", APPLE_VOICE_PREFIX, [voicesPopup titleOfSelectedItem]];
+  [synth setVoice:curVoice];
+}
+- (void)setSynthSpeed {
+  if ([opsSpeedCheck state] == NSOnState)
+  {
+    [synth setRate:[opsSpeedSlider floatValue]];
+  }
+}
+- (void)setSynthPitch {
+  if ([opsPitchCheck state] == NSOnState)
+  {
+    NSNumber *newPitch = [NSNumber numberWithFloat:[opsPitchSlider floatValue]];
+    [synth setObject:newPitch forProperty:NSSpeechPitchBaseProperty error:nil];
+  }
+}
+- (void)setSynthVolume {
+  if ([opsVolumeCheck state] == NSOnState)
+  {
+    [synth setVolume:[opsVolumeSlider floatValue]/100];
+  }
+}
 
 #pragma mark - Speech Interaction Subroutines
 - (void)startStopUtterance {
@@ -86,20 +112,13 @@
   }
 }
 - (void)startUtterance {
-  NSString *curVoice = [NSString stringWithFormat:@"%@%@", APPLE_VOICE_PREFIX, [voicesPopup titleOfSelectedItem]];
   NSString *utterance = [textToUtter stringValue];
 
-  // set voice
-  [synth setVoice:curVoice];
-
-  // set rate/speed
-  [synth setRate:[opsSpeedSlider floatValue]];
-
-  // set pitch
-  [synth setObject:[NSNumber numberWithFloat:[opsPitchSlider floatValue]] forProperty:NSSpeechPitchBaseProperty error:Nil];
-
-  // set volume
-  [synth setVolume:[opsVolumeSlider floatValue]/100];
+  // set up attributes
+  [self setSynthVoice];
+  [self setSynthSpeed];
+  [self setSynthPitch];
+  [self setSynthVolume];
 
   // speak!
   [synth stopSpeaking];
@@ -107,7 +126,6 @@
   [btnPlayStop setTitle:@"O"];
   [btnPauseResume setEnabled:YES];
   isSpeaking = YES;
-  NSLog(@"utterance is speaking");
 
   [self logSpeechStats];
 
@@ -116,7 +134,6 @@
   {
     [self saveUtteranceToFile];
   }
-
 }
 - (void)stopUtterance {
   [synth stopSpeaking];
@@ -208,54 +225,60 @@
 - (IBAction)opsSpeedDidChange:(id)sender {
   [opsSpeedText setFloatValue:(long)[opsSpeedSlider floatValue]];
 
-  if (!isPaused) { [self startStopUtterance]; }
-
-  [synth setRate:[opsSpeedSlider floatValue]];
-  //[synth setObject:[opsSpeedSlider value] forProperty:NSSpeechRateProperty error:nil];
-  NSLog(@"synth rate/speed changed to: %@", [synth objectForProperty:NSSpeechRateProperty error:nil]);
-
-  if (!isPaused) { [self startUtterance]; }
+  if ([opsSpeedCheck state] == NSOnState)
+  {
+    if (!isPaused) { [self startStopUtterance]; }
+    [self setSynthSpeed];
+    if (!isPaused) { [self startUtterance]; }
+  }
 }
 - (IBAction)opsPitchDidChange:(id)sender {
   [opsPitchText setFloatValue:(long)[opsPitchSlider floatValue]];
 
-  if (!isPaused) { [self startStopUtterance]; }
-
-  NSNumber *newPitch = [NSNumber numberWithFloat:[opsPitchSlider floatValue]];
-
-  [synth setObject:newPitch forProperty:NSSpeechPitchBaseProperty error:nil];
-  NSLog(@"synth pitch base: %@", [synth objectForProperty:NSSpeechPitchBaseProperty error:nil]);
-
-  if (!isPaused) { [self startUtterance]; }
+  if ([opsPitchCheck state] == NSOnState)
+  {
+    if (!isPaused) { [self startStopUtterance]; }
+    [self setSynthPitch];
+    if (!isPaused) { [self startUtterance]; }
+  }
 }
 - (IBAction)opsVolumeDidChange:(id)sender {
   [opsVolumeText setIntegerValue:(long)[opsVolumeSlider integerValue]];
 
-  if (!isPaused) { [self startStopUtterance]; }
-
-  [synth setVolume:[opsVolumeSlider floatValue]/100];
-  NSLog(@"synth volume: %@", [synth objectForProperty:NSSpeechVolumeProperty error:nil]);
-
-  if (!isPaused) { [self startUtterance]; }
+  if ([opsVolumeCheck state] == NSOnState)
+  {
+    if (!isPaused) { [self startStopUtterance]; }
+    [self setSynthVolume];
+    if (!isPaused) { [self startUtterance]; }
+  }
 }
 
 - (IBAction)opsSpeedResetClick:(id)sender {
   [opsSpeedSlider setFloatValue:INITIAL_SPEED];
   [opsSpeedText setFloatValue:INITIAL_SPEED];
-  [self startStopUtterance];
-  [self startUtterance];
+  if ([opsSpeedCheck state] == NSOnState)
+  {
+    [self startStopUtterance];
+    [self startUtterance];
+  }
 }
 - (IBAction)opsPitchResetClick:(id)sender {
   [opsPitchSlider setFloatValue:INITIAL_PITCH];
   [opsPitchText setFloatValue:INITIAL_PITCH];
-  [self startStopUtterance];
-  [self startUtterance];
+  if ([opsPitchCheck state] == NSOnState)
+  {
+    [self startStopUtterance];
+    [self startUtterance];
+  }
 }
 - (IBAction)opsVolumeResetClick:(id)sender {
   [opsVolumeSlider setIntegerValue:INITIAL_VOLUME];
   [opsVolumeText setIntegerValue:INITIAL_VOLUME];
-  [self startStopUtterance];
-  [self startUtterance];
+  if ([opsVolumeCheck state] == NSOnState)
+  {
+    [self startStopUtterance];
+    [self startUtterance];
+  }
 }
 
 - (IBAction)opsSaveToFileDidToggle:(id)sender {
@@ -288,8 +311,10 @@
   [self startStopUtterance];
 }
 
-- (void)drawerWillOpen:(NSNotification *)notification {}
-- (void)drawerWillClose:(NSNotification *)notification {}
+- (void)drawerWillOpen:(NSNotification *)notification {
+}
+- (void)drawerWillClose:(NSNotification *)notification {
+}
 
 - (void)speechSynthesizer:(NSSpeechSynthesizer *)sender didFinishSpeaking:(BOOL)finishedSpeaking {
   NSLog(@"utterance finished");

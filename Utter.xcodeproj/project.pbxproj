@@ -19,6 +19,12 @@
 		27672480192769850003E199 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767245F192769850003E199 /* Cocoa.framework */; };
 		27672488192769850003E199 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27672486192769850003E199 /* InfoPlist.strings */; };
 		2767248A192769850003E199 /* UtterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27672489192769850003E199 /* UtterTests.m */; };
+		279D28B4193860F40000B8C9 /* utter_logo_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 279D28AF193860F40000B8C9 /* utter_logo_128.png */; };
+		279D28B5193860F40000B8C9 /* utter_logo_256.png in Resources */ = {isa = PBXBuildFile; fileRef = 279D28B0193860F40000B8C9 /* utter_logo_256.png */; };
+		279D28B6193860F40000B8C9 /* utter_logo_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 279D28B1193860F40000B8C9 /* utter_logo_32.png */; };
+		279D28B8193860F40000B8C9 /* utter_logo_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 279D28B3193860F40000B8C9 /* utter_logo_64.png */; };
+		279D28BB193861AA0000B8C9 /* utter_logo_16.png in Resources */ = {isa = PBXBuildFile; fileRef = 279D28B9193861AA0000B8C9 /* utter_logo_16.png */; };
+		279D28BC193861AA0000B8C9 /* utter_logo_512.png in Resources */ = {isa = PBXBuildFile; fileRef = 279D28BA193861AA0000B8C9 /* utter_logo_512.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,12 @@
 		27672485192769850003E199 /* UtterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UtterTests-Info.plist"; sourceTree = "<group>"; };
 		27672487192769850003E199 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27672489192769850003E199 /* UtterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UtterTests.m; sourceTree = "<group>"; };
+		279D28AF193860F40000B8C9 /* utter_logo_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = utter_logo_128.png; sourceTree = "<group>"; };
+		279D28B0193860F40000B8C9 /* utter_logo_256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = utter_logo_256.png; sourceTree = "<group>"; };
+		279D28B1193860F40000B8C9 /* utter_logo_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = utter_logo_32.png; sourceTree = "<group>"; };
+		279D28B3193860F40000B8C9 /* utter_logo_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = utter_logo_64.png; sourceTree = "<group>"; };
+		279D28B9193861AA0000B8C9 /* utter_logo_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = utter_logo_16.png; sourceTree = "<group>"; };
+		279D28BA193861AA0000B8C9 /* utter_logo_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = utter_logo_512.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +91,7 @@
 		27672453192769850003E199 = {
 			isa = PBXGroup;
 			children = (
+				279D28AD193860F40000B8C9 /* Assets */,
 				27672465192769850003E199 /* Utter */,
 				27672483192769850003E199 /* UtterTests */,
 				2767245E192769850003E199 /* Frameworks */,
@@ -159,6 +172,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		279D28AD193860F40000B8C9 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				279D28AE193860F40000B8C9 /* Images */,
+			);
+			name = Assets;
+			path = Utter/Assets;
+			sourceTree = "<group>";
+		};
+		279D28AE193860F40000B8C9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				279D28B9193861AA0000B8C9 /* utter_logo_16.png */,
+				279D28BA193861AA0000B8C9 /* utter_logo_512.png */,
+				279D28AF193860F40000B8C9 /* utter_logo_128.png */,
+				279D28B0193860F40000B8C9 /* utter_logo_256.png */,
+				279D28B1193860F40000B8C9 /* utter_logo_32.png */,
+				279D28B3193860F40000B8C9 /* utter_logo_64.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,11 +270,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				279D28BB193861AA0000B8C9 /* utter_logo_16.png in Resources */,
+				279D28BC193861AA0000B8C9 /* utter_logo_512.png in Resources */,
 				2767246A192769850003E199 /* InfoPlist.strings in Resources */,
+				279D28B5193860F40000B8C9 /* utter_logo_256.png in Resources */,
+				279D28B4193860F40000B8C9 /* utter_logo_128.png in Resources */,
 				27672478192769850003E199 /* Images.xcassets in Resources */,
+				279D28B6193860F40000B8C9 /* utter_logo_32.png in Resources */,
 				2742FF55192B4BE10067DEFC /* README.md in Resources */,
 				27672470192769850003E199 /* Credits.rtf in Resources */,
 				27672476192769850003E199 /* MainMenu.xib in Resources */,
+				279D28B8193860F40000B8C9 /* utter_logo_64.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

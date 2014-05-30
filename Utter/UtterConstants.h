@@ -10,7 +10,7 @@
 #define Utter_Constants_h
 
 #define APPLE_VOICE_PREFIX @"com.apple.speech.synthesis.voice."
-#define INITIAL_TEXT @"this is a call to all my past resignations. this is a call to all the cows. my kind has all run out. it's been too long!"
+#define INITIAL_TEXT @"This is a call to all the cows. My kind has all run out. It's been too long!"
 #define INITIAL_SPEED 150
 #define INITIAL_PITCH 56
 #define INITIAL_PITCHMOD 60

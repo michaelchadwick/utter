@@ -215,10 +215,12 @@
 
 - (IBAction)opsDrawerDidToggle:(id)sender {
   NSDrawerState state = [opsDrawer state];
-  if (NSDrawerOpeningState == state || NSDrawerOpenState == state)
+  if (NSDrawerOpeningState == state || NSDrawerOpenState == state) {
     [opsDrawer close];
-  else
+  } else {
     [opsDrawer openOnEdge:NSMinYEdge];
+      //opsDrawerToggle
+  }
 }
 
 - (IBAction)opsSpeedDidChange:(id)sender {

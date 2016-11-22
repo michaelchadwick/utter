@@ -10,7 +10,7 @@ I've used say.app for years, and wondered recently if I could rebuild it (since 
 ### Features
 ---
 
-* Simple GUI way of using the say command. Just enter text and hit enter/click the play button.
+* Simple GUI way of using the say command. Just enter text and either hit Cmd-Enter or click the play button to hear it.
 * Pause and resume speech.
 * Change the speed/rate, pitch, pitchmod, or volume of the speech synthesis. Can utter speech when you change the options, too.
 * Save the speech to an AIFF on your desktop. Use the text itself as the filename, if you wish.
@@ -25,4 +25,4 @@ Clone the repo and build the Xcode project. It was created in Xcode 5, but may w
 The options drawer can be accessed by clicking the Options button on the main window.
 
 ### Questions, Feedback, Suggestions
-* [michael.chadwick@gmail.com](mailto:michael.chadwick@gmail.com)
+* [mike@codana.me](mailto:mike@codana.me)

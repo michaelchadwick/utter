@@ -10,7 +10,7 @@ I've used say.app for years, and wondered recently if I could rebuild it (since 
 ### Features
 ---
 
-* Simple GUI way of using the say command. Just enter text and either hit Cmd-Enter or click the play button to hear it.
+* Simple GUI way of using the say command. Just enter text and either hit Shift-Enter or click the play button to hear it.
 * Pause and resume speech.
 * Change the speed/rate, pitch, pitchmod, or volume of the speech synthesis. Can utter speech when you change the options, too.
 * Save the speech to an AIFF on your desktop. Use the text itself as the filename, if you wish.

@@ -91,7 +91,6 @@
 		27672453192769850003E199 = {
 			isa = PBXGroup;
 			children = (
-				279D28AD193860F40000B8C9 /* Assets */,
 				27672465192769850003E199 /* Utter */,
 				27672483192769850003E199 /* UtterTests */,
 				2767245E192769850003E199 /* Frameworks */,
@@ -132,6 +131,7 @@
 		27672465192769850003E199 /* Utter */ = {
 			isa = PBXGroup;
 			children = (
+				279D28AD193860F40000B8C9 /* Assets */,
 				27672471192769850003E199 /* AppDelegate.h */,
 				27672472192769850003E199 /* AppDelegate.m */,
 				27672474192769850003E199 /* MainMenu.xib */,
@@ -177,8 +177,7 @@
 			children = (
 				279D28AE193860F40000B8C9 /* Images */,
 			);
-			name = Assets;
-			path = Utter/Assets;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		279D28AE193860F40000B8C9 /* Images */ = {
